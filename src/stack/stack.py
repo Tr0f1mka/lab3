@@ -45,6 +45,8 @@ class Stack:
 
 
     def pop(self) -> int | float:
+        if len(self.data) == 0:
+            raise IndexError("Error: function \"pop\" cannot be applied to an empty stack")
         self.data.pop()
         q = self.data.pop()
         self.tofile()
@@ -52,6 +54,8 @@ class Stack:
 
 
     def peek(self) -> int | float:
+        if len(self.data) == 0:
+            raise IndexError("Error: function \"peek\" cannot be applied to an empty stack")
         return check_int(self.data[-2])
 
 
@@ -64,4 +68,6 @@ class Stack:
 
 
     def min(self) -> int | float:
+        if len(self.data) == 0:
+            raise IndexError("Error: function \"min\" cannot be applied to an empty stack")
         return check_int(self.data[-1])

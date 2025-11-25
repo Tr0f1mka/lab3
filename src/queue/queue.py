@@ -38,12 +38,16 @@ class Queue():
 
 
     def dequeue(self) -> int | float:
+        if len(self.data) == 0:
+            raise IndexError("Error: function \"dequeue\" cannot be applied to an empty stack")
         q = self.data.pop()
         self.tofile()
         return check_int(q)
 
 
     def front(self) -> int | float:
+        if len(self.data) == 0:
+            raise IndexError("Error: function \"front\" cannot be applied to an empty stack")
         return check_int(self.data[-1])
 
 

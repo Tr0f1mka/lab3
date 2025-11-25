@@ -135,7 +135,7 @@ def build_tree(a: list[int | float | str], n: int, i: int):
         build_tree(a, n, parent)
 
 
-def heap_sort(a: list[str]):
+def heap_sort(a: list[str]) -> list[int | float | str]:
     """
     Сортировка кучей
     """

@@ -69,7 +69,7 @@ def poker_bet(
     app_videopoker.poker_bet(a)
 
 
-@app.command(hidden=True, name="^^vv<><>AB")
+@app.command(hidden=True, name="^^vv<><>BA")
 def cheat():
     app_videopoker.cheat()
 
@@ -103,16 +103,16 @@ def s_push(
 def s_pop() -> None:
     try:
         print(app_stack.pop())
-    except IndexError:
-        print("Error: function \"pop\" cannot be applied to an empty stack")
+    except IndexError as e:
+        print(e)
 
 
 @app.command(help="Выводит верхний элемент стека")
 def s_peek() -> None:
     try:
         print(app_stack.peek())
-    except IndexError:
-        print("Error: function \"peek\" cannot be applied to an empty stack")
+    except IndexError as e:
+        print(e)
 
 
 @app.command(help="Проверяет, пуст ли стек")
@@ -129,8 +129,8 @@ def s_len() -> None:
 def s_min() -> None:
     try:
         print(app_stack.min())
-    except IndexError:
-        print("Error: function \"min\" cannot be applied to an empty stack")
+    except IndexError as e:
+        print(e)
 
 
 """-------Очередь-------"""
@@ -149,16 +149,16 @@ def q_enqueue(
 def q_dequeue() -> None:
     try:
         print(app_queue.dequeue())
-    except IndexError:
-        print("Error: function \"dequeue\" cannot be applied to an empty queue")
+    except IndexError as e:
+        print(e)
 
 
 @app.command(help="Выводит верхний элемент очереди")
 def q_front() -> None:
     try:
         print(app_queue.front())
-    except IndexError:
-        print("Error: function \"front\" cannot be applied to an empty queue")
+    except IndexError as e:
+        print(e)
 
 
 @app.command(help="Проверяет, пуста ли очередь")
