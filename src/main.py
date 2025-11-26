@@ -44,7 +44,7 @@ def spin() -> None:
 @app.command(help="Изменить текущую ставку в слоте")
 def slot_bet(
     a: int = typer.Argument(
-        help="Варианты ставок: 1 - 10, 2 - 25, 3 - 50(ввести номер ставки)",
+        help="Варианты ставок: 1 - 10 GC, 2 - 25 GC, 3 - 50 GC(ввести номер ставки)",
         callback=lambda x: check_bet(x, 1, 3)
     ),
 ) -> None:
@@ -62,7 +62,7 @@ def poker() -> None:
 @app.command(help="Изменить текущую ставку в видеопокере")
 def poker_bet(
     a: int = typer.Argument(
-        help="Варианты ставок: 1 - 25, 2 - 50, 3 - 75, 4 - 100, 5 - 125(ввести номер ставки)",
+        help="Варианты ставок: 1 - 25 GC, 2 - 50 GC, 3 - 75 GC, 4 - 100 GC, 5 - 125 GC(ввести номер ставки)",
         callback=lambda x: check_bet(x, 1, 5)
     )
 ) -> None:
@@ -71,6 +71,10 @@ def poker_bet(
 
 @app.command(hidden=True, name="^^vv<><>BA")
 def cheat():
+    """
+    Чит-код, меняющий значение баланса на 10000 GC(не добавляет, а заменяет)
+    """
+
     app_videopoker.cheat()
 
 
@@ -80,7 +84,7 @@ def cheat():
 @app.command(help="Сыграть в блекджек")
 def black(
     a: int = typer.Argument(
-        help="Сделать ставку от 25 до 500",
+        help="Сделать ставку от 25 до 500 GC",
         callback=lambda x: check_bet(x, 25, 500)
     )
 ) -> None:

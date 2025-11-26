@@ -149,33 +149,3 @@ def heap_sort(a: list[str]) -> list[int | float | str]:
         ans[i], ans[0] = ans[0], ans[i]   #type: ignore
         build_tree(ans, i, 0)
     return ans
-
-
-# print()
-# from random import randint, seed  # noqa: E402
-# seed(10)
-# b = ['a3', '52c', 'e6', '2a', 'A000', '23','320']
-# b = [3, 4, 1, 10, -7, 0]
-# b = [4.3, 76.5, -3, -3.1, 0, 4]
-# b = ['a', 'cat', 'werty', 'pk', 7]
-# b = [True, True, False, True]
-# b = [[1, 2], [3, 4], [1,], [5,]]
-# b = "34 56 -7 4 -1.0".split()
-# print(b)
-# print(sorted(b))
-# b = list(map(str, b))
-
-# print()
-# print(bubble_sort(b))
-# print(b)
-# print(quick_sort(b))
-# print()
-# print(counting_sort(b))
-# print()
-# print(radix_sort([str(x) for x in b], 16))
-# print(b)
-# print(bucket_sort(b))
-# print()
-# print(b)
-# print()
-# print(heap_sort(b))

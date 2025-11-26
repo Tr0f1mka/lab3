@@ -15,6 +15,9 @@ from src.sorts import counting_sort
 """
 
 class VideoPoker():
+    """
+    Видепокер
+    """
 
     def __init__(self) -> None:
         """
@@ -230,55 +233,55 @@ class VideoPoker():
         """
 
         rank = counting_sort([x%13 for x in self.hand])  # Отсортированный список рангов карт
-        suit = [x%4 for x in self.hand]               # Список мастей
+        suit = [x%4 for x in self.hand]                  # Список мастей
 
         if self.check_flush_royal(suit, rank):
-            print(f"JACKPOT! You win: {25*cons.PAYOUT_TABLE[0][self.bet-1]}")
+            print(f"JACKPOT! You win: {25*cons.PAYOUT_TABLE[0][self.bet-1]} GC")
             self.balance += 25*cons.PAYOUT_TABLE[0][self.bet-1]
 
         elif self.check_street_flush(suit, rank):
-            print(f"Street flush! You win: {25*cons.PAYOUT_TABLE[1][self.bet-1]}")
+            print(f"Street flush! You win: {25*cons.PAYOUT_TABLE[1][self.bet-1]} GC")
             self.balance += 25*cons.PAYOUT_TABLE[1][self.bet-1]
 
         elif self.check_kara(rank):
-            print(f"Kara! You win: {25*cons.PAYOUT_TABLE[2][self.bet-1]}")
+            print(f"Kara! You win: {25*cons.PAYOUT_TABLE[2][self.bet-1]} GC")
             self.balance += 25*cons.PAYOUT_TABLE[2][self.bet-1]
 
         elif self.check_full_house(rank):
-            print(f"Full house! You win: {25*cons.PAYOUT_TABLE[3][self.bet-1]}")
+            print(f"Full house! You win: {25*cons.PAYOUT_TABLE[3][self.bet-1]} GC")
             self.balance += 25*cons.PAYOUT_TABLE[3][self.bet-1]
 
         elif self.check_flush(suit):
-            print(f"Flush! You win: {25*cons.PAYOUT_TABLE[4][self.bet-1]}")
+            print(f"Flush! You win: {25*cons.PAYOUT_TABLE[4][self.bet-1]} GC")
             self.balance += 25*cons.PAYOUT_TABLE[4][self.bet-1]
 
         elif self.check_street(rank):
-            print(f"Street! You win: {25*cons.PAYOUT_TABLE[5][self.bet-1]}")
+            print(f"Street! You win: {25*cons.PAYOUT_TABLE[5][self.bet-1]} GC")
             self.balance += 25*cons.PAYOUT_TABLE[5][self.bet-1]
 
         elif self.check_set(rank):
-            print(f"Set! You win: {25*cons.PAYOUT_TABLE[6][self.bet-1]}")
+            print(f"Set! You win: {25*cons.PAYOUT_TABLE[6][self.bet-1]} GC")
             self.balance += 25*cons.PAYOUT_TABLE[6][self.bet-1]
 
         elif self.check_2_pairs(rank):
-            print(f"2 pairs! You win: {25*cons.PAYOUT_TABLE[7][self.bet-1]}")
+            print(f"2 pairs! You win: {25*cons.PAYOUT_TABLE[7][self.bet-1]} GC")
             self.balance += 25*cons.PAYOUT_TABLE[7][self.bet-1]
 
         elif self.check_pair_tens_and_more(rank):
-            print(f"Pair! You win: {25*cons.PAYOUT_TABLE[8][self.bet-1]}")
+            print(f"Pair! You win: {25*cons.PAYOUT_TABLE[8][self.bet-1]} GC")
             self.balance += 25*cons.PAYOUT_TABLE[8][self.bet-1]
 
         else:
-            print("you lose")
+            print("You lose")
 
 
     def cheat(self) -> None:
         """
-        Заменяет баланс игрока на 10000
+        Заменяет баланс игрока на 10000 GC
         :return: Ничего не возвращает
         """
 
-        self.data[0] = 10000
+        self.data[0] = 500
         self.tofile()
 
 

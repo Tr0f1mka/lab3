@@ -15,6 +15,9 @@ from src.utilities.card_wrap import wrap
 """
 
 class BlackJack():
+    """
+    Блекджек
+    """
 
     def __init__(self) -> None:
         """
@@ -289,13 +292,12 @@ class BlackJack():
                 print("Ничья. Ваша ставка возвращена.")
                 self.balance += self.bet
             else:
-                print(f"Блекджек! Ваш выигрыш: {int(self.bet*2.5)}")
+                print(f"Блекджек! Ваш выигрыш: {int(self.bet*2.5)} GC")
                 self.balance += int(self.bet*2.5)
 
         # Перебор дилера - победа игрока(ставка*2)
         elif self.dealer_cnt > 21:
-            self.balance += self.bet*2
-            print(f"Перебор диллера. Ваш выигрыш: {self.bet*2}")
+            print(f"Перебор диллера. Ваш выигрыш: {self.bet*2} GC")
             self.balance += self.bet*2
 
         # Блекджек дилера - поражение игрока
@@ -304,7 +306,7 @@ class BlackJack():
 
         # Счёт игрока выше дилера - победа игрока(ставка*2)
         elif self.player_cnt > self.dealer_cnt:
-            print(f"Победа. Ваш выигрыш: {self.bet*2}")
+            print(f"Победа. Ваш выигрыш: {self.bet*2} GC")
             self.balance += self.bet*2
 
         # Счёт игрока ниже дилера - поражение игрока

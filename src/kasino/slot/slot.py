@@ -18,6 +18,9 @@ print("\033[2K\033[A\033[2K\033[A\033[2K\033[A")
 
 
 class Slot:
+    """
+    Слот
+    """
 
     def __init__(self) -> None:
         """
@@ -145,18 +148,18 @@ class Slot:
 
             if symb_a == "💎":
                 self.color_print(
-                    f"Jackpot! Your prize: {self.bet * cons.MULT_3_SYMB[symb_a]}"
+                    f"Jackpot! Your prize: {self.bet * cons.MULT_3_SYMB[symb_a]} GC"
                 )
                 self.jackpot.play()
                 time.sleep(5)
 
             elif symb_a == "💰":
-                print(f"Mega win! Your prize: {self.bet * cons.MULT_3_SYMB[symb_a]}")
+                print(f"Mega win! Your prize: {self.bet * cons.MULT_3_SYMB[symb_a]} GC")
                 self.mega_win.play()
                 time.sleep(4)
 
             else:
-                print(f"You win! Your prize: {self.bet * cons.MULT_3_SYMB[symb_a]}")
+                print(f"You win! Your prize: {self.bet * cons.MULT_3_SYMB[symb_a]} GC")
                 self.win.play()
                 time.sleep(2)
 
@@ -164,7 +167,7 @@ class Slot:
 
             if symb_a in cons.MULT_2_SYMB:
                 self.balance += self.bet * cons.MULT_2_SYMB[symb_a]
-                print(f"So good! Your prize: {self.bet * cons.MULT_2_SYMB[symb_a]}")
+                print(f"So good! Your prize: {self.bet * cons.MULT_2_SYMB[symb_a]} GC")
                 self.win.play()
                 time.sleep(2)
 
