@@ -281,7 +281,7 @@ class VideoPoker():
         :return: Ничего не возвращает
         """
 
-        self.data[0] = 500
+        self.data[0] = 10000
         self.tofile()
 
 
