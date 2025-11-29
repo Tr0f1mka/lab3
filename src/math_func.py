@@ -1,6 +1,8 @@
 from functools import lru_cache
+from src.utilities.logger import create_log
 
 
+@create_log
 def factorial(n: int) -> int | str:
     if n < 0:
         return f"Error: undefined element with index {n}"
@@ -10,6 +12,7 @@ def factorial(n: int) -> int | str:
     return a
 
 
+@create_log
 @lru_cache(None)
 def factorial_recursive(n: int) -> int | str:
     if n < 0:
@@ -21,6 +24,7 @@ def factorial_recursive(n: int) -> int | str:
     return n * factorial_recursive(n - 1)
 
 
+@create_log
 def fibo(n: int) -> int | str:
     if n < 0:
         return f"Error: undefined element with index {n}"
@@ -32,6 +36,7 @@ def fibo(n: int) -> int | str:
     return d[-1]
 
 
+@create_log
 @lru_cache(None)
 def fibo_recursive(n: int) -> int | str:
     if n < 0:
@@ -39,28 +44,3 @@ def fibo_recursive(n: int) -> int | str:
     if n < 2:
         return n
     return fibo_recursive(n - 1) + fibo_recursive(n - 2)      #type: ignore
-
-
-
-# x = 3
-# print(fibo_iter(x))
-# print(fibo_recursive(x))
-# print(fibonacci_numpy(x))
-# print(fibo_recursive(x) == fibonacci_numpy(x))
-
-
-# for i in range(-2, 11):
-#     print(factorial(i))
-# print()
-
-# for i in range(-2, 11):
-#     print(factorial_recursive(i))
-# print()
-
-# for i in range(-2, 11):
-#     print(fibo(i))
-# print()
-
-# for i in range(-2, 11):
-#     print(fibo_recursive(i))
-# print()

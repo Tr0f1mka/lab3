@@ -36,9 +36,7 @@ class TestStack(unittest.TestCase):
         self.assertEqual(len(test.data), 6)
 
         test.data = array('d', [])
-        with self.assertRaises(IndexError) as e:
-            test.pop()
-            self.assertEqual(e, "Error: function \"pop\" cannot be applied to an empty stack")
+        self.assertEqual(test.pop(), "Error: function \"pop\" cannot be applied to an empty stack")
 
 
     @patch("src.stack.stack.Stack.fromfile")
@@ -55,9 +53,7 @@ class TestStack(unittest.TestCase):
         self.assertEqual(len(test.data), 8)
 
         test.data = array('d', [])
-        with self.assertRaises(IndexError) as e:
-            test.pop()
-            self.assertEqual(e, "Error: function \"peek\" cannot be applied to an empty stack")
+        self.assertEqual(test.peek(), "Error: function \"peek\" cannot be applied to an empty stack")
 
 
     @patch("src.stack.stack.Stack.fromfile")
@@ -99,6 +95,4 @@ class TestStack(unittest.TestCase):
         self.assertEqual(test.min(), -3.6)
 
         test.data = array('d', [])
-        with self.assertRaises(IndexError) as e:
-            test.pop()
-            self.assertEqual(e, "Error: function \"min\" cannot be applied to an empty stack")
+        self.assertEqual(test.min(), "Error: function \"min\" cannot be applied to an empty stack")

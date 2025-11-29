@@ -2,6 +2,7 @@ import array
 import os
 from src.constants import QUEUE_MEMORY
 from src.utilities.structure_tools import check_int
+from src.utilities.logger import structure_data_log, check_data_base
 
 
 """
@@ -19,6 +20,7 @@ class Queue():
     Очередь
     """
 
+    @check_data_base                 #type: ignore
     def __init__(self) -> None:
         """
         Инициализирует очередь
@@ -51,6 +53,7 @@ class Queue():
             self.data.tofile(f)
 
 
+    @structure_data_log
     def enqueue(self, x: float) -> None:
         """
         Вставляет элемент в начало очереди
@@ -62,6 +65,7 @@ class Queue():
         self.tofile()
 
 
+    @structure_data_log
     def dequeue(self) -> int | float:
         """
         Извлекает элемент из очереди, удаляя его
@@ -75,6 +79,7 @@ class Queue():
         return check_int(q)
 
 
+    @structure_data_log
     def front(self) -> int | float:
         """
         Извлекает элемент из стека, не удаляя его
@@ -86,6 +91,7 @@ class Queue():
         return check_int(self.data[-1])
 
 
+    @structure_data_log
     def is_empty(self) -> bool:
         """
         Проверяет, пуста ли очередь
@@ -95,6 +101,7 @@ class Queue():
         return not (self.data)
 
 
+    @structure_data_log
     def __len__(self) -> int:
         """
         Возвращает длину очереди

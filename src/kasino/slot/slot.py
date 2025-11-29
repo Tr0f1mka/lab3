@@ -7,6 +7,8 @@ from pygame import mixer     #type: ignore
 import webbrowser
 import os
 import src.constants as cons
+from src.utilities.logger import check_data_base, create_log, kasik_log
+
 
 print("\033[2K\033[A\033[2K\033[A\033[2K\033[A")
 
@@ -22,6 +24,7 @@ class Slot:
     Слот
     """
 
+    @check_data_base                 #type: ignore
     def __init__(self) -> None:
         """
         Инициализирует объект
@@ -205,6 +208,7 @@ class Slot:
                 time.sleep(0.5)
 
 
+    @kasik_log
     def spin(self) -> None:
         """
         Основная игровая функция
@@ -265,6 +269,7 @@ class Slot:
             print("Your balance is empty. Come back tomorrow!")
 
 
+    @create_log
     def change_bet(self, a: int) -> None:
         """
         Меняет ставку

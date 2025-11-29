@@ -2,6 +2,7 @@ import array
 import os
 from src.constants import STACK_MEMORY
 from src.utilities.structure_tools import check_int
+from src.utilities.logger import structure_data_log, check_data_base
 
 
 """
@@ -19,6 +20,7 @@ class Stack():
     Стек
     """
 
+    @check_data_base                 #type: ignore
     def __init__(self) -> None:
         """
         Инициализирует стек
@@ -51,6 +53,7 @@ class Stack():
             self.data.tofile(f)
 
 
+    @structure_data_log
     def push(self, x: float) -> None:
         """
         Вставляет элемент в конец стека
@@ -69,6 +72,7 @@ class Stack():
         self.tofile()
 
 
+    @structure_data_log
     def pop(self) -> int | float:
         """
         Извлекает элемент из стека, удаляя его
@@ -83,6 +87,7 @@ class Stack():
         return check_int(q)
 
 
+    @structure_data_log
     def peek(self) -> int | float:
         """
         Извлекает элемент из стека, не удаляя его
@@ -94,6 +99,7 @@ class Stack():
         return check_int(self.data[-2])
 
 
+    @structure_data_log
     def is_empty(self) -> bool:
         """
         Проверяет, пуст ли стек
@@ -103,6 +109,7 @@ class Stack():
         return not (self.data)
 
 
+    @structure_data_log
     def __len__(self) -> int:
         """
         Возвращает длину стека
@@ -112,6 +119,7 @@ class Stack():
         return len(self.data) // 2
 
 
+    @structure_data_log
     def min(self) -> int | float:
         """
         Возвращает минимум стека

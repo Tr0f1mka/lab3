@@ -7,6 +7,8 @@ import os
 import src.constants as cons
 import shutil as poshutil
 from src.utilities.card_wrap import wrap
+from src.utilities.logger import check_data_base, kasik_log
+
 
 """
 ------------------
@@ -19,6 +21,7 @@ class BlackJack():
     Блекджек
     """
 
+    @check_data_base                 #type: ignore
     def __init__(self) -> None:
         """
         Инициализирует объект
@@ -319,6 +322,7 @@ class BlackJack():
             self.balance += self.bet
 
 
+    @kasik_log
     def game(self, a: int) -> None:
         """
         Основная игровая функция

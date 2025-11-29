@@ -35,10 +35,8 @@ class TestQueue(unittest.TestCase):
         self.assertEqual(test.dequeue(), 654)
         self.assertEqual(len(test.data), 4)
 
-        test.data = array('d', [])
-        with self.assertRaises(IndexError) as e:
-            test.dequeue()
-            self.assertEqual(e, "Error: function \"dequeue\" cannot be applied to an empty stack")
+        test.data = array('d')
+        self.assertEqual(test.dequeue(), "Error: function \"dequeue\" cannot be applied to an empty stack")
 
 
     @patch("src.queue.queue.Queue.fromfile")
@@ -55,9 +53,7 @@ class TestQueue(unittest.TestCase):
         self.assertEqual(len(test.data), 5)
 
         test.data = array('d', [])
-        with self.assertRaises(IndexError) as e:
-            test.front()
-            self.assertEqual(e, "Error: function \"front\" cannot be applied to an empty stack")
+        self.assertEqual(test.front(), "Error: function \"front\" cannot be applied to an empty stack")
 
 
     @patch("src.queue.queue.Queue.fromfile")

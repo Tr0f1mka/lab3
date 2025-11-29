@@ -7,6 +7,8 @@ import os
 import src.constants as cons
 from src.utilities.card_wrap import wrap
 from src.sorts import counting_sort
+from src.utilities.logger import check_data_base, create_log, kasik_log
+
 
 """
 ------------------
@@ -19,6 +21,8 @@ class VideoPoker():
     Видепокер
     """
 
+
+    @check_data_base                 #type: ignore
     def __init__(self) -> None:
         """
         Инициализирует объект
@@ -285,6 +289,7 @@ class VideoPoker():
         self.tofile()
 
 
+    @kasik_log
     def game(self) -> None:
         """
         Основная игровая функция
@@ -326,6 +331,7 @@ class VideoPoker():
             print("Come back tomorrow!")
 
 
+    @create_log
     def poker_bet(self, a: int) -> None:
         """
         Меняет множитель ставки

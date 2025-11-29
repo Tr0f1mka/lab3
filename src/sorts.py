@@ -1,6 +1,8 @@
 from src.utilities.check_list import check_list
+from src.utilities.logger import create_log
 
 
+@create_log
 def bubble_sort(a: list[str]) -> list[int | float | str]:
     """
     Сортировка пузырьком
@@ -14,6 +16,7 @@ def bubble_sort(a: list[str]) -> list[int | float | str]:
     return ans
 
 
+@create_log
 def quick_sort(a: list[int | float | str]) -> list[int | float | str]:
     """
     Быстрая сортировка
@@ -29,6 +32,7 @@ def quick_sort(a: list[int | float | str]) -> list[int | float | str]:
     return quick_sort(left) + middle + quick_sort(right)
 
 
+@create_log
 def counting_sort(a: list[int]) -> list[int]:
     """
     Сортировка подсчётом
@@ -49,6 +53,7 @@ def counting_sort(a: list[int]) -> list[int]:
     return res
 
 
+@create_log
 def radix_sort(a: list[str], base: int = 10) -> list[str]:
     """
     Поразрядная сортировка
@@ -74,6 +79,7 @@ def radix_sort(a: list[str], base: int = 10) -> list[str]:
     return res
 
 
+@create_log
 def bucket_sort(a: list[int|float], buckets: int | None = None) -> list[int|float] | str:
     """
     Корзинная сортировка
@@ -91,7 +97,7 @@ def bucket_sort(a: list[int|float], buckets: int | None = None) -> list[int|floa
     if buckets is None:                          # Если неизвестно количество корзин - использование длины списка
         buckets = len(a)
     elif buckets <= 1:
-        return "Error: basket sorting requires at least 2 buckets"
+        raise ValueError("Error: basket sorting requires at least 2 buckets")
 
     arrs: list[list[int|float]] = [[] for i in range(buckets)]          # Создание списка корзин
 
@@ -135,6 +141,7 @@ def build_tree(a: list[int | float | str], n: int, i: int):
         build_tree(a, n, parent)
 
 
+@create_log
 def heap_sort(a: list[str]) -> list[int | float | str]:
     """
     Сортировка кучей

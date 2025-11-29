@@ -88,9 +88,7 @@ class TestSorts(unittest.TestCase):
         for i in range(len(testcase)):
             self.assertEqual(sorts.radix_sort(*testcase[i]), expect[i])
 
-        with self.assertRaises(ValueError) as e:
-            sorts.radix_sort(["34.5", "5", "23", "45"])
-            self.assertEqual(e, "Error: radix sort does not work with real numbers.")
+        self.assertEqual(sorts.radix_sort(["34.5", "5", "23", "45"]), "Error: radix sort does not work with real numbers.")
 
 
     def test_bucket_sort(self):
