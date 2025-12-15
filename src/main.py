@@ -116,10 +116,12 @@ def s_push(
 ) -> None:
     e = app_stack.push(x)            #type: ignore
     print(e) if e else ...
+    app_stack.tofile()
 
 @app.command(help="Выводит верхний элемент стека, удаляя его.")
 def s_pop() -> None:
     print(app_stack.pop())           #type: ignore
+    app_stack.tofile()
 
 
 @app.command(help="Выводит верхний элемент стека")
@@ -152,11 +154,13 @@ def q_enqueue(
     x: float = typer.Argument(help="Целое число, которое нужно положить в очередь"),
 ) -> None:
     app_queue.enqueue(x)             #type: ignore
+    app_queue.tofile()
 
 
 @app.command(help="Выводит верхний элемент очереди, удаляя его.")
 def q_dequeue() -> None:
     print(app_queue.dequeue())             #type: ignore
+    app_queue.tofile()
 
 
 @app.command(help="Выводит верхний элемент очереди")

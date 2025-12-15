@@ -1,5 +1,6 @@
 from src.utilities.check_list import check_list
 from src.utilities.logger import create_log
+from random import randint
 
 
 @create_log
@@ -10,9 +11,13 @@ def bubble_sort(a: list[str]) -> list[int | float | str]:
 
     ans = check_list(a)
     for i in range(len(ans)):
+        flag = True
         for j in range(len(ans) - i - 1):
             if ans[j] > ans[j + 1]:                         #type: ignore
                 ans[j], ans[j + 1] = ans[j + 1], ans[j]     #type: ignore
+                flag = False
+        if flag:
+            return ans
     return ans
 
 
@@ -24,7 +29,7 @@ def quick_sort(a: list[int | float | str]) -> list[int | float | str]:
 
     if len(a) <= 1:
         return a
-    mid = a[len(a) // 2]
+    mid = a[randint(0, len(a)-1)]
     left = [x for x in a if x < mid]      #type: ignore
     middle = [x for x in a if x == mid]   #type: ignore
     right = [x for x in a if x > mid]     #type: ignore

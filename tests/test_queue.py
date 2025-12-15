@@ -12,12 +12,12 @@ class TestQueue(unittest.TestCase):
 
         test = Queue()
         test.data = array('d', [3, -2, 5.4])
-        expect = array('d', [-3, 3, -2, 5.4])
+        expect = array('d', [3, -2, 5.4, -3])
         test.enqueue(-3)
         self.assertEqual(test.data, expect)
 
         test.data = array('d', [3, -2, 5.4])
-        expect = array('d', [-3.6, 3, -2, 5.4])
+        expect = array('d', [3, -2, 5.4, -3.6])
         test.enqueue(-3.6)
         self.assertEqual(test.data, expect)
 
@@ -28,11 +28,11 @@ class TestQueue(unittest.TestCase):
 
         test = Queue()
         test.data = array('d', [-3.6, 3, -2, 5.4])
-        self.assertEqual(test.dequeue(), 5.4)
+        self.assertEqual(test.dequeue(), -3.6)
         self.assertEqual(len(test.data), 3)
 
-        test.data = array('d', [-3.6, 3, -2, 5, 654])
-        self.assertEqual(test.dequeue(), 654)
+        test.data = array('d', [36, 3, -2, 5, 654])
+        self.assertEqual(test.dequeue(), 36)
         self.assertEqual(len(test.data), 4)
 
         test.data = array('d')
@@ -45,11 +45,11 @@ class TestQueue(unittest.TestCase):
 
         test = Queue()
         test.data = array('d', [-3.6, 3, -2, 5.4])
-        self.assertEqual(test.front(), 5.4)
+        self.assertEqual(test.front(), -3.6)
         self.assertEqual(len(test.data), 4)
 
-        test.data = array('d', [-3.6, 3, -2, 5, 654])
-        self.assertEqual(test.front(), 654)
+        test.data = array('d', [36, 3, -2, 5, 654])
+        self.assertEqual(test.front(), 36)
         self.assertEqual(len(test.data), 5)
 
         test.data = array('d', [])

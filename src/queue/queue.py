@@ -27,20 +27,22 @@ class Queue():
         :return: Ничего не возвращает
         """
 
-        self.data = array.array("d")
-        self.fromfile()
+        self.data = self.fromfile()
 
 
-    def fromfile(self) -> None:
+    @staticmethod
+    def fromfile() -> array.array:
         """
         Извлекает очередь из файла
         :return: Ничего не возвращает
         """
 
+        data = array.array("d")
         with open(QUEUE_MEMORY, "rb") as f:
             size_f = os.path.getsize(QUEUE_MEMORY)
             cnt_elems = size_f // 8
-            self.data.fromfile(f, cnt_elems)
+            data.fromfile(f, cnt_elems)
+        return data
 
 
     def tofile(self) -> None:
@@ -61,8 +63,7 @@ class Queue():
         :return: Ничего не возвращает
         """
 
-        self.data.insert(0, x)
-        self.tofile()
+        self.data.append(x)
 
 
     @structure_data_log
@@ -72,10 +73,9 @@ class Queue():
         :return: Число - верхний элемент очереди
         """
 
-        if len(self.data) == 0:
+        if not self.data:
             raise IndexError("Error: function \"dequeue\" cannot be applied to an empty stack")
-        q = self.data.pop()
-        self.tofile()
+        q = self.data.pop(0)
         return check_int(q)
 
 
@@ -86,9 +86,9 @@ class Queue():
         :return: Число - верхний элемент очереди
         """
 
-        if len(self.data) == 0:
+        if not self.data:
             raise IndexError("Error: function \"front\" cannot be applied to an empty stack")
-        return check_int(self.data[-1])
+        return check_int(self.data[0])
 
 
     @structure_data_log

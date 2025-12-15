@@ -27,20 +27,22 @@ class Stack():
         :return: Ничего не возвращает
         """
 
-        self.data = array.array("d")
-        self.fromfile()
+        self.data = self.fromfile()
 
 
-    def fromfile(self) -> None:
+    @staticmethod
+    def fromfile() -> array.array:
         """
         Извлекает стек из файла
         :return: Ничего не возвращает
         """
 
+        data = array.array("d")
         with open(STACK_MEMORY, "rb") as f:
             size_f = os.path.getsize(STACK_MEMORY)
             cnt_elems = size_f // 8
-            self.data.fromfile(f, cnt_elems)
+            data.fromfile(f, cnt_elems)
+        return data
 
 
     def tofile(self) -> None:
@@ -69,7 +71,6 @@ class Stack():
                 self.data.append(self.data[-2])
             else:
                 self.data.append(x)
-        self.tofile()
 
 
     @structure_data_log
@@ -79,11 +80,10 @@ class Stack():
         :return: Число - верхний элемент стека
         """
 
-        if len(self.data) == 0:
+        if not self.data:
             raise IndexError("Error: function \"pop\" cannot be applied to an empty stack")
         self.data.pop()
         q = self.data.pop()
-        self.tofile()
         return check_int(q)
 
 
@@ -94,7 +94,7 @@ class Stack():
         :return: Число - верхний элемент стека
         """
 
-        if len(self.data) == 0:
+        if not self.data:
             raise IndexError("Error: function \"peek\" cannot be applied to an empty stack")
         return check_int(self.data[-2])
 
@@ -126,6 +126,6 @@ class Stack():
         :return: Число - минимум стека
         """
 
-        if len(self.data) == 0:
+        if not self.data:
             raise IndexError("Error: function \"min\" cannot be applied to an empty stack")
         return check_int(self.data[-1])
