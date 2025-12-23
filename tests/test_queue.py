@@ -21,6 +21,7 @@ class TestQueue(unittest.TestCase):
         test.enqueue(-3.6)
         self.assertEqual(test.data, expect)
 
+
     @patch("src.queue.queue.Queue.fromfile")
     @patch("src.queue.queue.Queue.tofile")
     def test_dequeue(self, mock_tofile, mock_fromfile):
